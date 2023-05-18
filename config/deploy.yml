@@ -22,7 +22,7 @@ registry:
 # Inject ENV variables into containers (secrets come from .env).
 env:
   clear:
-    DB_HOST: 192.168.0.2
+    DB_HOST: 46.101.161.119
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
