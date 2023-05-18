@@ -23,8 +23,10 @@ RUN apt-get update -qq && \
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
+RUN gem install bundler -v 2.4.12
+RUN gem install ffi
 RUN gem install nokogiri --platform=ruby
-RUN bundle install && \
+RUN bundle check || bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
